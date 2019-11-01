@@ -1,13 +1,15 @@
+'''Use 3-4 cecs of 'sleep' because of slowly ethernet, your may change this
+'''
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from time import sleep
 import pyautogui
 
 global child
-child=12
+child=0
 step=1
 
-chromedriver_path = 'C:/chromedriver.exe'
+chromedriver_path = 'C:/chromedriver.exe' #way to your actual version of chromedriver
 webdriver = webdriver.Chrome(executable_path=chromedriver_path)
 sleep(3)
 webdriver.get('https://www.instagram.com/accounts/login/?source=auth_switcher')
