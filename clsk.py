@@ -24,6 +24,15 @@ button_login = webdriver.find_element_by_css_selector('#react-root > section > m
 button_login.click()
 sleep(4)
 
+passw=webdriver.find_element_by_xpath('//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[1]/div/label/input')
+if len(passw.get_attribute('value'))==6: #enter password from sms on your phone, olny 6 numbers
+    env=webdriver.find_element_by_css_selector('#react-root > section > main > div > article > div > div:nth-child(1) > div > form > div.Igw0E.IwRSH.eGOV_._4EzTm.MGdpg.CovQj.jKUp7.iHqQ7 > button')
+    env.click()
+    sleep(7)
+else:
+    sleep(5)
+
+
 but=webdriver.find_element_by_css_selector('body > div.RnEpo.Yx5HN > div > div > div.mt3GC > button.aOOlW.HoLwm')
 but.click()
 sleep(2)
