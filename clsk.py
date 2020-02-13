@@ -111,7 +111,7 @@ while True:
     else:
         try:
             print(pyautogui.position())
-            pyautogui.moveTo(780, 636)
+            pyautogui.moveTo(780, 636) #actual for 1366x768
             pyautogui.click(780, 636, (int(child) + int(step // 2)), 0.5)
             sleep(1)
             print(child, step)
