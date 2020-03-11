@@ -24,8 +24,8 @@ def looker():
         sleep(1)
 
     def name_user_and_log_in():
-        browser.find_element_by_name("username").send_keys('sclirk')
-        browser.find_element_by_name('password').send_keys('NEW_castle131')
+        browser.find_element_by_name("username").send_keys('passw')
+        browser.find_element_by_name('password').send_keys('passw')
         browser.find_element_by_css_selector('#react-root > section > main > div > article > div > '
                                              'div:nth-child(1) > div > form '
                                              '> div:nth-child(4) > button > '
