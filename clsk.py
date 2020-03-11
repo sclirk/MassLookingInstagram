@@ -4,10 +4,13 @@ from time import sleep
 
 def looker():
     global name
-    name = "marizhelby"  # имя посещаемого профиля
+    name = "marizhelby"
+    child = 0
+    iteration = 1
     default_name = name
-    iteration = 10
-    
+    browser = webdriver.Chrome("C:/chromedriver.exe")
+    browser.get('https://www.instagram.com/accounts/login/?source=auth_switcher')
+
     def max_sleep():
         sleep(25)
 
@@ -20,131 +23,110 @@ def looker():
     def short_sleep():
         sleep(1)
 
-    browser = webdriver.Chrome("C:/chromedriver.exe")
-    browser.get('https://www.instagram.com/accounts/login/?source=auth_switcher')
-    mid_sleep()
+    def name_user_and_log_in():
+        browser.find_element_by_name("username").send_keys('sclirk')
+        browser.find_element_by_name('password').send_keys('NEW_castle131')
+        browser.find_element_by_css_selector('#react-root > section > main > div > article > div > '
+                                             'div:nth-child(1) > div > form '
+                                             '> div:nth-child(4) > button > '
+                                             'div').click()
+        max_sleep()
 
-    username = browser.find_element_by_name("username")
-    username.send_keys('USERNAME')
-    password = browser.find_element_by_name('password')
-    password.send_keys('PASSWORD')
+        browser.find_element_by_xpath('//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div['
+                                      '2]/button').click()
+        long_sleep()
 
-    button_login = browser.find_element_by_css_selector('#react-root > section > main > div > article > div > '
-                                                        'div:nth-child(1) > div > form > div:nth-child(4) > button > '
-                                                        'div')
-    button_login.click()
-    max_sleep()
+        browser.find_element_by_css_selector(
+            'body > div.RnEpo.Yx5HN > div > div > div.mt3GC > button.aOOlW.HoLwm').click()
+        mid_sleep()
 
-    passw = browser.find_element_by_xpath('//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div['
-                                          '2]/button')
-    passw.click()
     long_sleep()
+    name_user_and_log_in()
+    browser.find_element_by_class_name('TqC_a').click()
+    short_sleep()
 
-    but = browser.find_element_by_css_selector('body > div.RnEpo.Yx5HN > div > div > div.mt3GC > button.aOOlW.HoLwm')
-    but.click()
+    browser.find_element_by_css_selector(
+        '#react-root > section > nav > div._8MQSO.Cx7Bp '
+        '> div > div > div.LWmhU._0aCwM > input').send_keys('{}'.format(name))
+    mid_sleep()
+    browser.find_element_by_class_name('Ap253').click()
     mid_sleep()
 
-    search = browser.find_element_by_class_name('TqC_a')
-    search.click()
-
-    searc = browser.find_element_by_css_selector(
-        '#react-root > section > nav > div._8MQSO.Cx7Bp > div > div > div.LWmhU._0aCwM > input')
-    searc.send_keys('{}'.format(name))
+    browser.find_element_by_css_selector(
+        '#react-root > section > main > div > header > section > ul > li:nth-child(2) > a').click()
     mid_sleep()
-
-    s = browser.find_element_by_class_name('Ap253')
-    s.click()
-    mid_sleep()
-
-    e = browser.find_element_by_css_selector(
-        '#react-root > section > main > div > header > section > ul > li:nth-child(2) > a')
-    e.click()
-    mid_sleep()
-    child = 0
 
     def find_name():
-        search = browser.find_element_by_class_name('TqC_a')
-        search.click()
+        browser.find_element_by_xpath('//*[@id="react-root"]/section/nav/div[2]/div/div/div[2]/div').click()
         mid_sleep()
-        searc = browser.find_element_by_css_selector(
-            '#react-root > section > nav > div._8MQSO.Cx7Bp > div > div > div.LWmhU._0aCwM > input')
-        searc.send_keys('{}'.format(name))
+        browser.find_element_by_css_selector(
+            '#react-root > section > nav > '
+            'div._8MQSO.Cx7Bp > div > div > div.LWmhU._0aCwM > input').send_keys('{}'.format(name))
         mid_sleep()
-        s = browser.find_element_by_class_name('Ap253')
-        s.click()
+        browser.find_element_by_class_name('Ap253').click()
         mid_sleep()
-        e = browser.find_element_by_css_selector(
-            '#react-root > section > main > div > header > section > ul > li:nth-child(2) > a')
-        e.click()
+        browser.find_element_by_css_selector(
+            '#react-root > section > main > div > header > section > ul > li:nth-child(2) > a').click()
         mid_sleep()
 
     def click_followers():
         short_sleep()
-        t = browser.find_element_by_xpath(
-            '/html/body/div[4]/div/div[2]/ul/div/li[{}]/div/div[1]/div'.format(child))
-        t.click()
+        browser.find_element_by_xpath(
+            '/html/body/div[4]/div/div[2]/ul/div/li[{}]/div/div[1]/div'.format(child)).click()
         short_sleep()
 
-    def another_clock_followers():
+    def another_click_followers():
         short_sleep()
-        t = browser.find_element_by_xpath(
-            ('/html/body/div[3]/div/div[2]/ul/div/li[{}]/div/div[1]/div[1]'.format(child)))
-        t.click()
+        browser.find_element_by_xpath(
+            '/html/body/div[3]/div/div[2]/ul/div/li[{}]/div/div[1]/div[1]'.format(child)).click()
         long_sleep()
 
     while True:
+        print(child, iteration)
         child += 1
         if child < iteration:
             try:
+                short_sleep()
                 click_followers()
             except Exception:
-                another_clock_followers()
+                another_click_followers()
             try:
-                click_followers.t.click()
+                short_sleep()
+                find_name()
             except Exception:
                 try:
-                    r = browser.find_element_by_css_selector(
-                        '#react-root > section > div > div > section > div.GHEPc > button.-jHC6')
-                    r.click()
+                    browser.find_element_by_css_selector(
+                        '#react-root > section > div > div > section > div.GHEPc > button.-jHC6').click()
                     short_sleep()
                 except Exception:
                     find_name()
         else:
-            try:
-                click_followers()
-            except Exception:
-                another_clock_followers()
-            try:
-                another_clock_followers.t.click()
-            except Exception:
-                try:
-                    iteration = 10
-                    close_story = browser.find_element_by_css_selector(
-                        '#react-root > section > div > div > section > header > div > div.MS2JH > div > div > div > a')
-                    close_story.click()
-                    short_sleep()
-                    history = browser.find_element_by_css_selector(
-                        "#react-root > section > main > div > header > section > div.nZSzR > h1")
-                    name = history.text
-                    child = 0
-                    mid_sleep()
-                    homepage = browser.find_element_by_xpath(
-                        '//*[@id="react-root"]/section/nav/div[2]/div/div/div[1]/a/div')
-                    homepage.click()
-                    find_name()
-                except Exception:
-                    short_sleep()
-                    name = default_name
-                    iteration -= 1
-                    find_name()
-                    # history = browser.find_element_by_css_selector(
-                    #     "#react-root > section > main > div > header > section > div.nZSzR > h1")
-                    # name = history.text
-                    # child = 0
-                    # sleep(4)
-                    # homepage = browser.find_element_by_xpath('//*[@id="react-root"]/section/nav/div[2]/div/div/div[1]/a/div')
-                    # homepage.click()
-                    # find_name()
+            click_followers()
+            try:  # have story
+                story_close = browser.find_element_by_css_selector(
+                    '#react-root > section > div > div > section > header > div > div.MS2JH > div > div > div > a')
+                story_close.click()
+                short_sleep()
+                iteration = 10
+                browser.find_element_by_css_selector(
+                    '#react-root > section > div > div >'
+                    ' section > header > div > div.MS2JH > div > div > div > a').click()
+                short_sleep()
+                history = browser.find_element_by_css_selector(
+                    "#react-root > section > main > div > header > section > div.nZSzR > h1")
+                name = history.text
+                child = 0
+                long_sleep()
+                browser.find_element_by_xpath(
+                    '//*[@id="react-root"]/section/nav/div[2]/div/div/div[1]/a/div').click()
+                find_name()
+            except Exception:  # without story
+                profile = browser.find_element_by_css_selector(
+                    "#react-root > section > main > div > header > section > div.nZSzR > h1")
+                name = profile.text
+                short_sleep()
+                iteration -= 1
+                find_name()
 
 
 looker()
