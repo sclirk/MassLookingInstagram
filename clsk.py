@@ -6,7 +6,7 @@ def looker():
     global name
     name = "marizhelby"
     child = 0
-    iteration = 1
+    iteration = 10
     default_name = name
     browser = webdriver.Chrome("C:/chromedriver.exe")
     browser.get('https://www.instagram.com/accounts/login/?source=auth_switcher')
